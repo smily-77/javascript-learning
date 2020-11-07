@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子旋转导航栏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            float: left;
+            margin: 0 10px;
+            perspective: 300px;
+            list-style: none;
+
+
+
+        }
+        .box {
+            position: relative;
+            width: 80px;
+            height: 50px;
+            margin: 100px auto;
+            /*使子类保持3d效果*/
+            transform-style: preserve-3d;
+            /*变换持续时间1s*/
+            transition: all 1s;
+        }
+        .front,
+        .bottom {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .front {
+            background: pink;
+            z-index: 1;
+            /*为了使盒子围绕中心选择，前面盒子沿着z轴正方向移动*/
+            transform: translateZ(25px);
+        }
+        .bottom {
+            background: #55bb8a;
+            /*底面盒子向下移动到底部，同时向前旋转，注意书写顺序，要先写位移*/
+            transform: translateY(50%) rotateX(-90deg);
+
+        }
+        .box:hover {
+
+            transform: rotateX(90deg);
+
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>
+        <div class="box">
+            <div class="front">科目一</div>
+            <div class="bottom">数学</div>
+        </div>
+    </li>
+    <li>
+        <div class="box">
+            <div class="front">科目一</div>
+            <div class="bottom">数学</div>
+        </div>
+    </li>
+    <li>
+        <div class="box">
+            <div class="front">科目一</div>
+            <div class="bottom">数学</div>
+        </div>
+    </li>
+    <li>
+        <div class="box">
+            <div class="front">科目一</div>
+            <div class="bottom">数学</div>
+        </div>
+    </li>
+    <li>
+        <div class="box">
+            <div class="front">科目一</div>
+            <div class="bottom">数学</div>
+        </div>
+    </li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小熊奔跑图</title>
+    <style>
+        .one {
+            position: relative;
+            width: 1600px;
+            height: 1000px;
+            background: url("../img/beijin.jpg") repeat-x;
+            /*使用动画beijinmove infinite循坏*/
+            animation: beijinmove 10s linear infinite;
+
+        }
+        .two {
+         perspective: 350px;
+            position: absolute;
+            top: 860px;
+            width: 200px;
+            height: 100px;
+            background:url("../img/bear.png");
+            /*使用动画，同时使用两个动画中间用  ，隔开 */
+            animation: rap 1s steps(8) infinite, move 4s forwards;
+        }
+        @keyframes beijinmove {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 100% 0;
+            }
+
+        }
+     @keyframes rap {
+         0% {
+             background-position: 0 0;
+
+         }
+         100% {
+             background-position: -1600px 0;
+         }
+     }
+        @keyframes move {
+            0% {
+                left: 0;
+
+            }
+            100% {
+                left: 50%;
+                transform: translateX(-50%);
+
+            }
+
+        }
+        .box {
+            position: relative;
+            top: 200px;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            transform-style: preserve-3d;
+            transition: all 2s;
+
+        }
+        .box:hover {
+            transform: rotateY(180deg);
+        }
+
+        .first,
+        .second {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 200px;
+            border-radius: 50%;
+            font-size: 30px;
+            color: #fff;
+        }
+        .first {
+            background: pink;
+            z-index: 1;
+
+        }
+        .second {
+            background: lightskyblue;
+            /*背对背贴着*/
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+<div class="one">
+    <div class="box">
+        <div class="first">冰雪世界</div>
+        <div class="second">熊大~熊二~</div>
+    </div>
+    <div class="two"></div>
+</div>
+
+
+
+
+</body>
+</html>

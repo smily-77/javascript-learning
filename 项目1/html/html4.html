@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body{
+            background:black;
+            perspective:800px;
+        }
+
+        div{
+           width:133px;
+            height:200px;
+            border:2px solid red;
+            margin:300px auto;
+            transform-style: preserve-3d;
+            transform: rotatex(0deg) rotatey(0deg);
+        }
+        img{
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+<div>
+
+    <img src="../photo/1.jpg"/>
+
+    <img src="../photo/4.jpg"/>
+    <img src="../photo/8.jpg"/>
+    <img src="../photo/9.jpg"/>
+    <img src="../photo/11.jpg"/>
+    <img src="../photo/12.jpg"/>
+
+</div>
+<script type="text/javascript">
+ var x=360/document.querySelectorAll("img").length;
+</script>
+
+
+
+</body>
+</html>

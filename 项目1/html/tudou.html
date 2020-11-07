@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tudou</title>
+    <style>
+        .box{
+            position: relative;
+            width: 222px;
+            height: 220px;
+            margin: 100px auto;
+        }
+        .mask {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 222px;
+            height: 220px;
+            background:rgba(0, 0, 0, .3) url(../photo/arr.png) no-repeat center center;
+        }
+        .box a:hover .mask {
+            display: block;
+        }
+        
+
+    </style>
+</head>
+<body>
+  <div class="box">
+      <a href="#">
+          <div class="mask"></div>
+          <img src="../photo/3.jpg" alt="">
+      </a>
+
+  </div>
+</body>
+</html>
