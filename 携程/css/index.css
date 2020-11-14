@@ -1,0 +1,212 @@
+body {
+    min-width: 320px;
+    max-width: 540px;
+    font: normal 14px/1.5 Tahoma;
+    margin: 0 auto;
+    color: #000;
+    background: #f2f2f2;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    text-decoration: none;
+    color: #222;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.div {
+    box-sizing: border-box;
+}
+
+
+/* 搜索 */
+
+.search-index {
+    display: flex;
+    /* 固定定位跟父级没有关系，他以屏幕为准，所以要设置最小宽度和最大宽度 */
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 44px;
+    width: 100%;
+    /* 因为有固定定位 */
+    min-width: 320px;
+    max-width: 540px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background: #f6f6f6;
+}
+
+.search {
+    position: relative;
+    margin-left: 23px;
+    flex: 1;
+    height: 26px;
+    /* css3盒模型把边框算进去了，行高=高度减去边框才能居中 */
+    line-height: 24px;
+    margin: 8px 10px;
+    border: 1px solid #ccc;
+    /* 阴影 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+    border-radius: 10px;
+    padding-left: 23px;
+    color: #666;
+    font-size: 12px;
+}
+
+.search::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 5px;
+    width: 13px;
+    height: 13px;
+    background: url(../images/sprite.png) no-repeat -59px -280px;
+    background-size: 104px auto;
+}
+
+.user {
+    width: 44px;
+    height: 44px;
+    color: #099fde;
+    font-size: 12px;
+    text-align: center;
+}
+
+.user::before {
+    content: "";
+    display: block;
+    width: 23px;
+    height: 23px;
+    /* 先把精灵图缩小一半，找到对应位置图标 */
+    background: url(../images/sprite.png) no-repeat -59px -194px;
+    background-size: 104px auto;
+    margin: 4px auto 0;
+}
+
+
+/* 焦点图 */
+
+.focus {
+    /* 上面搜索盒子用了固定定位，固定定位不占高度，会把下面标准流的盒子覆盖掉，所以给一个padding值 */
+    margin-top: 44px;
+}
+
+.focus img {
+    width: 100%;
+}
+
+
+/* 局部导航 */
+
+.local-nav {
+    display: flex;
+    height: 64px;
+    margin: 2px 3px;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.local-nav li {
+    flex: 1;
+}
+
+.local-nav a {
+    /* flex布局这样里面的span盒子可以有大小了 */
+    display: flex;
+    /* 设置主轴方向为y轴 */
+    flex-direction: column;
+    /* 设置册轴排练方式· */
+    align-items: center;
+    margin-top: 5px;
+}
+
+.local-nav li [class^="local-nav-icon"] {
+    width: 32px;
+    height: 32px;
+    background: url(../images/localnav_bg.png) no-repeat 0 0;
+    background-size: 32px;
+}
+
+.local-nav li .local-nav-icon2 {
+    background-position: 0 -32px;
+}
+
+.local-nav li .local-nav-icon3 {
+    background-position: 0 -64px;
+}
+
+.local-nav li .local-nav-icon4 {
+    background-position: 0 -96px;
+}
+
+.local-nav li .local-nav-icon5 {
+    background-position: 0 -128px;
+}
+
+
+/* 主导航栏 */
+
+.nav {
+    overflow: hidden;
+    margin: 0 4px 3px;
+    border-radius: 10px;
+}
+
+.nav-common {
+    display: flex;
+    height: 88px;
+}
+
+.nav-common:nth-child(1) {
+    background: -webkit-linear-gradient(left, #fa5a55, #fa994d);
+}
+
+.nav-common:nth-child(2) {
+    background: -webkit-linear-gradient(left, #4b90ed, #53bced);
+}
+
+.nav-common:nth-child(3) {
+    background: -webkit-linear-gradient(left, #34c2a9, #6cd559);
+}
+
+.nav-items {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-items a {
+    flex: 1;
+    line-height: 44px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    /* 文字阴影 */
+    text-shadow: 1px 1px rgba(0, 0, 0.3);
+}
+
+.nav-common .nav-items:nth-child(1) a {
+    border: 0;
+    background: url(../images/hotel.png) no-repeat bottom center;
+    background-size: 121px auto;
+}
+
+.nav-items a:nth-child(1) {
+    border-bottom: 1px solid #fff;
+}
+
+.nav-items:nth-child(-n+2) {
+    border-right: solid 1px #fff;
+}
+
+.nav-common:nth-child(2) {
+    margin: 3px 0;
+}
