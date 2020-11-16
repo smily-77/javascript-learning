@@ -210,3 +210,119 @@ ul {
 .nav-common:nth-child(2) {
     margin: 3px 0;
 }
+
+
+/* 侧导航栏 */
+
+.subnav {
+    display: flex;
+    border-radius: 8px;
+    margin: 0 4px;
+    background: #fff;
+    flex-wrap: wrap;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, .3);
+}
+
+.subnav li {
+    flex: 20%;
+}
+
+.subnav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+span[class^="subnav-icon"] {
+    width: 28px;
+    height: 28px;
+    background: url(../images/subnav-bg.png) no-repeat;
+    background-size: 28px auto;
+    margin-top: 4px;
+}
+
+.subnav .subnav-icon1 {
+    background-position: 0 0;
+}
+
+.subnav .subnav-icon2 {
+    background-position: 0 -28px;
+}
+
+.subnav .subnav-icon3 {
+    background-position: 0 -56px;
+}
+
+
+/* 销售热卖 */
+
+.sales {
+    background: #fff;
+    border-top: 1px solid #bbb;
+    margin: 4px;
+    border-radius: 8px;
+}
+
+.sales-hd {
+    position: relative;
+    height: 44px;
+    border-bottom: 1px solid #ccc;
+}
+
+.sales-hd h2 {
+    position: relative;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+.sales-hd h2::after {
+    position: absolute;
+    top: 8px;
+    left: 20px;
+    content: "";
+    width: 75px;
+    height: 15px;
+    background: url(../images/hot.png) no-repeat 0 -18px;
+    background-size: 73px;
+}
+
+.more {
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    background: -webkit-linear-gradient(left, #ff506c, #ff50c6);
+    padding: 3px 20px 3px 10px;
+    color: #fff;
+    border-radius: 15px;
+    font-size: 12px;
+}
+
+.more::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    width: 7px;
+    height: 7px;
+    border-top: 1px solid #fff;
+    border-right: 1px solid #fff;
+    transform: rotate(45deg);
+}
+
+.row {
+    display: flex;
+    border-radius: 8px;
+}
+
+.row a {
+    flex: 1;
+    border-bottom: 1px solid #eee;
+}
+
+.row a:nth-child(1) {
+    border-right: 1px solid #eee;
+}
+
+.row a img {
+    width: 100%;
+}
