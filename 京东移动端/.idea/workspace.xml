@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae4d10ff-0ade-4285-9cd7-1ad3c2fae8e7" name="Default Changelist" comment="" />
+    <list default="true" id="ae4d10ff-0ade-4285-9cd7-1ad3c2fae8e7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -50,6 +52,7 @@
         <option value="$PROJECT_DIR$/../javascript-learning/项目1/html/旋转木马.html" />
         <option value="$PROJECT_DIR$/css/index.css" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/my.less" />
       </list>
     </option>
   </component>
@@ -71,21 +74,6 @@
             <path>
               <item name="京东移动端" type="b2602c69:ProjectViewProjectNode" />
               <item name="京东移动端" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="京东移动端" type="b2602c69:ProjectViewProjectNode" />
-              <item name="京东移动端" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="京东移动端" type="b2602c69:ProjectViewProjectNode" />
-              <item name="京东移动端" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="京东移动端" type="b2602c69:ProjectViewProjectNode" />
-              <item name="京东移动端" type="462c0819:PsiDirectoryNode" />
-              <item name="upload" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -133,6 +121,7 @@
       <workItem from="1604921805787" duration="7032000" />
       <workItem from="1605080930800" duration="2880000" />
       <workItem from="1605155166760" duration="599000" />
+      <workItem from="1605515904225" duration="183000" />
     </task>
     <task id="LOCAL-00001" summary="1.移动端首页">
       <created>1604827762176</created>
@@ -145,7 +134,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18442000" />
+    <option name="totallyTimeSpent" value="18625000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1320" height="784" extended-state="6" />
@@ -199,17 +188,20 @@
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa12892.15600/normalize.css" />
     <entry file="file://$PROJECT_DIR$/../javascript-learning/项目1/html/旋转木马.html" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa49912.13023/index.css" />
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="100" column="10" selection-start-line="100" selection-start-column="10" selection-end-line="100" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/index.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3002">
           <caret line="158" column="9" selection-start-line="158" selection-start-column="9" selection-end-line="158" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my.less">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="563">
+          <caret line="100" column="10" selection-start-line="100" selection-start-column="10" selection-end-line="100" selection-end-column="10" />
         </state>
       </provider>
     </entry>

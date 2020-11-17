@@ -1,0 +1,96 @@
+@import  "common";
+@basefont: 50;
+
+body {
+    min-width: 320px;
+    //小注意点
+    max-width: 15rem;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-family: Arial,Helvetica;
+    background:#F2F2F2;
+}
+.serach-content {
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15rem;
+    height: 88rem / @basefont;
+    background: #ffc001;
+    .classify {
+        width: 44rem / @basefont;
+        height: 70rem / @basefont;
+        background: url(../images/classify.png) no-repeat;
+        background-size: 44rem / @basefont 70rem / @basefont;
+        margin: 11rem / @basefont 25rem / @basefont 7rem / @basefont 24rem / @basefont;
+        
+    }
+    .search {
+        flex: 1;
+      input {
+          outline: none;
+          border: 0;
+          width: 100%;
+          height: 66rem / @basefont;
+          background: #fff2cc;
+          border-radius: 33rem / @basefont;
+          font-size: 25rem / @basefont;
+          padding-left: 30rem / @basefont;
+          color: #757575;
+      }
+
+    }
+    .login {
+       width: 75rem / @basefont;
+       height: 70rem / @basefont;
+       line-height: 70rem / @basefont;
+       margin: 10rem / @basefont;
+       color: #fff;
+       font-size: 25rem / @basefont;
+    }
+}
+// banner
+.banner {
+    width: 750rem / @basefont;
+    height: 368rem / @basefont;
+    img {
+        width: 100%;
+        height: 100%
+    }
+}
+// focus图
+.focus {
+    display: flex;
+    a{
+        flex: 1;
+        img {
+            width: 100%;
+        }
+    }
+
+}
+// nav
+.nav {
+    width: 750rem / @basefont;
+    a{
+        float: left;
+        width: 150rem / @basefont;
+        height: 140rem / @basefont;
+        text-align: center;
+        img {
+            display: block;
+            width: 82rem / @basefont;
+            height: 82rem / @basefont;
+            margin: 10rem / @basefont auto 0;
+            
+        }
+        span {
+            display: block;
+            font-size: 25rem / @basefont;
+            color: #333;
+         
+        }
+    }
+}
