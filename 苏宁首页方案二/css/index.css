@@ -1,0 +1,70 @@
+body {
+    min-width: 320px;
+    max-width: 750px;
+    width: 10rem;
+    margin: 0 auto !important;
+    line-height: 1.5;
+    font-family: Arial, Helvetica;
+    background: #f2f2f2;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    outline: none;
+}
+
+
+/* 如果屏幕超过了750px ,那么就按照750设计稿，不会让我们的页面超过750 */
+
+@media screen and (min-width: 750px) {
+    html {
+        font-size: 75px !important;
+    }
+}
+
+.search-content {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    width: 10rem;
+    height: 1.173333rem;
+    background: #ffc001;
+    border-radius: 0.2rem;
+}
+
+.classify {
+    margin: 0.146667rem 0.333333rem 0.133333rem 0.333333rem;
+    width: 0.586667rem;
+    height: 0.933333rem;
+    background: url(../images/classify.png) no-repeat;
+    background-size: 0.586667rem 0.933333rem;
+}
+
+.search {
+    flex: 1;
+}
+
+.search input {
+    height: 0.88rem;
+    width: 100%;
+    border: 0;
+    margin-top: 0.133333rem;
+    font-size: 0.333333rem;
+    border-radius: 0.44rem;
+    padding: 0.466667rem;
+}
+
+.login {
+    width: 1rem;
+    height: 0.933333rem;
+    line-height: 0.933333rem;
+    text-align: center;
+    margin: 0.133333rem;
+    font-size: 0.333333rem;
+    color: #fff;
+}
