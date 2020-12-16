@@ -2,16 +2,19 @@ window.addEventListener('load', function() {
     var arrow_l = document.querySelector('.arrow_l');
     var arrow_r = document.querySelector('.arrow_r');
     var focus = document.querySelector('.focus');
-    //鼠标经过显示隐藏左右按钮
+    //鼠标经过显示隐藏左右按钮,自动播放轮播图按钮关闭
     focus.addEventListener('mouseenter', function() {
         arrow_l.style.display = 'block';
         arrow_r.style.display = 'block';
+        clearInterval(timer);
 
     })
     focus.addEventListener('mouseleave', function() {
         arrow_l.style.display = 'none';
         arrow_r.style.display = 'none';
-
+        timer = setInterval(function() {
+            arrow_r.click();
+        }, 2000)
     })
 
 
@@ -65,6 +68,29 @@ window.addEventListener('load', function() {
         if (circle == ol.children.length) {
             circle = 0;
         }
+
+        circleChange();
+    })
+
+
+    arrow_l.addEventListener('click', function() {
+        //当走到第一张图片时，快速跳到克隆的图片，再到第四张；
+        if (num == 0) {
+            num = ul.children.length - 1;
+            ul.style.left = -num * focusWidth + 'px';
+        }
+        num--;
+        animate(ul, -num * focusWidth);
+        circle--;
+        //如果circle<0说明走到第一张图片了
+        if (circle < 0) {
+            circle = ol.children.length - 1;
+        }
+        circleChange();
+
+    })
+
+    function circleChange() {
         //先清除其余小圆圈的current类名
         for (var i = 0; i < ol.children.length; i++) {
             ol.children[i].className = '';
@@ -72,9 +98,14 @@ window.addEventListener('load', function() {
         //当前小圆圈类名为current
         ol.children[circle].className = 'current';
 
-    })
+    }
 
 
+    //自动播放功能
+    var timer = setInterval(function() {
+        //手动点击右侧按钮
+        arrow_r.click();
+    }, 2000)
 
 
 })
