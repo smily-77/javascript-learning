@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .slider-bar {
+            position: absolute;
+            left: 50%;
+            top: 300px;
+            margin-left: 600px;
+            width: 45px;
+            height: 130px;
+            background-color: pink;
+        }
+        
+        .w {
+            width: 1200px;
+            margin: 10px auto;
+        }
+        
+        .header {
+            height: 150px;
+            background: purple;
+        }
+        
+        .banner {
+            height: 250px;
+            background: skyblue;
+        }
+        
+        .main {
+            height: 1000px;
+            background: yellowgreen;
+        }
+        
+        span {
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-bar">
+        <span class="goBack">返回顶部</span>
+    </div>
+    <div class="header w">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体部分</div>
+    <script>
+        var sliderBar = document.querySelector('.slider-bar');
+        var banner = document.querySelector('.banner');
+        var bannerTop = banner.offsetTop;
+        //当我们侧边栏固定定位后应该变化的数值
+        var sliderBarTop = sliderBar.offsetTop - bannerTop;
+        //页面滚动事件scroll
+        document.addEventListener('scroll', function() {
+            //window.pageYoffset页面被卷去的头部大于bannertop时，侧边栏修改为固定定位
+            if (window.pageYOffset >= bannerTop) {
+                sliderBar.style.position = 'fixed';
+                sliderBar.style.top = sliderBarTop + "px";
+
+            } else {
+                sliderBar.style.position = 'absolute';
+                sliderBar.style.top = '300px';
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        body {
+            padding: 100px;
+        }
+        
+        textarea {
+            width: 200px;
+            height: 100px;
+            border: 1px solid pink;
+            outline: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button>发布</button>
+
+    <ul></ul>
+</body>
+<script>
+    var btn = document.querySelector('button');
+    var ul = document.querySelector('ul');
+    var textarea = document.querySelector('textarea');
+    btn.onclick = function() {
+        if (textarea.value == 0) {
+            alert('您没有输入内容');
+        } else {
+            //创建li元素
+            var li = document.createElement('li');
+            //将文本域的内容赋给li
+            li.innerHTML = textarea.value + "<a href='javascript:;'>删除</a>";
+            //ul的前面追加元素
+            ul.insertBefore(li, ul.children[0]);
+            //文本域的内容清空
+            textarea.value = '';
+
+            //删除留言
+            //获取删除留言的链接
+            var as = document.querySelectorAll('a');
+            //给每个链接绑定事件
+            for (i = 0; i < as.length; i++) {
+                as[i].onclick = function() {
+                    //删除a所在的li
+                    ul.removeChild(this.parentNode);
+
+                }
+            }
+
+        }
+    }
+</script>
+
+</html>

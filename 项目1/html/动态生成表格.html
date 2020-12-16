@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 500px;
+            margin: 100px auto;
+            text-align: center;
+        }
+        
+        button {
+            position: absolute;
+            top: 245px;
+            left: 31%;
+        }
+        
+        td,
+        th {
+            border: 1px solid #333;
+        }
+        
+        thead tr {
+            height: 40px;
+            background: #ccc;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .bg {
+            background: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="qall"></th>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <button>删除</button>
+
+    <script>
+        var datas = [{
+            name: '小明',
+            subject: 'javascript',
+            score: 100
+        }, {
+            name: '小红',
+            subject: 'javascript',
+            score: 88
+        }, {
+            name: '小蓝',
+            subject: 'javascript',
+            score: 91
+        }, {
+            name: '小粉',
+            subject: 'javascript',
+            score: 80
+        }];
+        var tbody = document.querySelector('tbody');
+        for (var i = 0; i < datas.length; i++) { //外面的for管行
+            //1.创建行
+            var tr = document.createElement('tr');
+            tbody.appendChild(tr); //插入行
+
+            //创建带选择框的操作的单元格
+            var td = document.createElement('td');
+            td.innerHTML = ' <input type="checkbox">';
+            tr.appendChild(td);
+
+
+            //重点
+            //2.创建数据单元格，行里面创建单元格td的数量取决于每个对象里面的属性个数，  for循坏遍历数组对象datas[]
+            for (var k in datas[i]) { //里面的for管列
+                var td = document.createElement('td');
+                /* for (var k in obj){
+                    k得到的是属性名
+                    obj[k]得到的是属性值
+                } */
+                td.innerHTML = datas[i][k];
+                tr.appendChild(td); //插入单元格
+            }
+            //3.创建带删除操作的单元格
+            var td = document.createElement('td');
+            td.innerHTML = ' <a href="javacsript:;">删除</a>';
+            tr.appendChild(td);
+
+        }
+        //4.删除操作
+        var as = document.querySelectorAll('a');
+
+        for (var i = 0; i < as.length; i++) {
+            as[i].onclick = function() {
+                tbody.removeChild(this.parentNode.parentNode);
+
+            }
+        }
+        //经过表格颜色变换
+        var trs = tbody.querySelectorAll('tr');
+        for (var i = 0; i < trs.length; i++) {
+            trs[i].onmouseover = function() {
+                this.className = 'bg';
+            }
+            trs[i].onmouseout = function() {
+                this.className = '';
+            }
+        }
+        //全选和取消全选的操作；
+        var qall = document.getElementById('qall');
+        var xzs = tbody.querySelectorAll('input');
+        //当全选按钮被勾选时，其它按钮被勾选
+        qall.onclick = function() {
+                for (var i = 0; i < xzs.length; i++) {
+                    xzs[i].checked = this.checked;
+                }
+            }
+            //当其它按钮都被勾选时，全选被勾选
+        for (var i = 0; i < xzs.length; i++) {
+
+            xzs[i].onclick = function() {
+                var flag = true;
+                for (var i = 0; i < xzs.length; i++) {
+                    if (!xzs[i].checked) {
+                        flag = false;
+                    }
+                    qall.checked = flag;
+                }
+            }
+        }
+
+        //按删除键，被勾选的删除
+        var btn = document.querySelector('button');
+        btn.onclick = function() {
+            for (var i = 0; xzs.length; i++) {
+                if (xzs[i].checked) {
+                    tbody.removeChild(xzs[i].parentNode.parentNode);
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

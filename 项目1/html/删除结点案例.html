@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>删除</button>
+    <ul>
+        <li>老大</li>
+        <li>老二</li>
+        <li>老三</li>
+    </ul>
+</body>
+<script>
+    var btn = document.querySelector('button');
+    var ul = document.querySelector('ul');
+    btn.onclick = function() {
+        if (ul.children.length == 0) {
+            //当里面的元素为零，就不能再删除了，删除按钮禁用
+            this.disabled = true;
+        } else {
+            ul.removeChild(ul.children[0]);
+        }
+    }
+</script>
+
+</html>

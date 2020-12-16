@@ -1,0 +1,62 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+/*清除斜体样式*/
+em,
+i {
+    font-style: normal;
+}
+/*清除列表的小点*/
+li {
+    list-style: none;
+}
+/*清除图片底部的空白*/
+img {
+    border: 0;/*ie6*/
+    vertical-align: middle;
+}
+/*按钮鼠标变成小手*/
+button {
+    cursor: pointer;
+    border: 0;
+}
+a {
+    color: #666;
+    text-decoration: none;
+}
+body a:hover {
+    color: #e33333
+}
+
+button,
+input {
+    font-family:'Microsoft YaHei','Heiti SC',tahoma,arial,'Hiragino Sans GB',
+    \\SBBB\4F53,sans-serif;
+    outline: none;
+
+}
+body {
+    background-color: #fff;
+    font: 12px/1.5 'Microsoft YaHei','Heiti SC',tahoma,Arial,'Hiragino Sans GB',
+    \\SBBB\4F53,sans-serif;
+    color: #666;
+}
+/*隐藏*/
+.hide,
+.none {
+    display: none;
+
+}
+/*清除浮动*/
+.clearfix:after {
+    visibility: hidden;
+    clear: both;
+    display: block;
+    content: '.';
+    height: 0;
+}
+.clearfix {
+    *zoom: 1;
+}

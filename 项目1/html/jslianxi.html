@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // var age = prompt('你今年多少岁啦');
+        // var str = '我今年' + age + '岁';
+        // alert(str);
+        // console.log(str);
+        // var sum = 0,
+        //     average = 0;
+        // var num = prompt('你班有多少同学');
+
+        // for (var i = 1; i <= num; i++) {
+        //     var score = prompt('第' + i + '个同学成绩'); //变量
+        //     sum += parseFloat(score)
+        // }
+        // average = sum / parseFloat(num);
+        // alert(average);
+
+        // var row = prompt('几行♥');
+        // var col = prompt('几列♥');
+
+        // var str = "";
+        // for (var j = 1; j <= row; j++) {
+        //     for (var i = j; i <= col; i++) {
+        //         str = str + "♥";
+        //     }
+
+        //     str = str + '\n';
+        // }
+        // console.log(str);
+
+        /* var str = prompt('你爱我嘛');
+        while (str != '我爱你') {
+            str = prompt('你爱我嘛');
+        }
+        alert('我也爱你'); */
+
+        // 简易atm
+        /*  var money = 100;
+         do {
+             var num = prompt('请输入您要的操作：\n 1.存钱 \n 2.取钱 \n 3.显示余额 \n 4. 退出');
+             switch (num) {
+                 case '1':
+                     var saveMoney = prompt('输入存钱金额');
+                     money += parseFloat(saveMoney);
+                     alert(money);
+                     break;
+                 case '2':
+                     var withdrawMoney = prompt('输入存钱金额');
+                     var lingshi = 0;
+                     lingshi = money - parseFloat(withdrawMoney);
+                     if (lingshi >= 0) {
+                         money = lingshi;
+                         alert(money);
+                     } else {
+                         alert('您的金额不足');
+                     }
+                     break;
+                 case '3':
+                     alert(money);
+                     break;
+                 case '4':
+                     alert('正在退出');
+                     break;
+                 default:
+                     alert('输入错误');
+                     break;      
+             }
+         } while (num != '4') */
+
+
+        //冒泡排序
+        /*  var arr = [4, 7, 8, 9, 0, 11, 23];
+
+         for (var i = 0; i <= arr.length - 1; i++) {
+             for (var j = 0; j <= arr.length - i - 1; j++) {
+                 if (arr[j] < arr[j + 1]) {
+                     var temp = arr[j + 1];
+                     arr[j + 1] = arr[j];
+                     arr[j] = temp;
+                 }
+             }
+         }
+         console.log(arr); */
+
+        /*  function isRunYear(year) {
+             var flag = false;
+             if (year % 4 == 0 && year % 100 == 0 || year % 400 == 0) {
+                 flag = true;
+             }
+             return flag;
+         }
+
+         function blackYear() {
+             var year = prompt('请输入你的年份');
+             if (isRunYear) {
+                 alert('是闰年');
+             } else {
+                 alert('是平年');
+             }
+         }
+         blackYear(); */
+
+        // var computer = {
+        //     color: '黑色',
+        //     weight: '500g',
+        //     brand: '华硕',
+        //     gn: function() {
+        //         console.log('看电影');
+        //     }
+        // }
+        // console.log(computer.brand);
+
+        // var bottom1 = new Object();
+        // bottom1.width = 200;
+        // bottom1.height = 500;
+        // bottom1.kn = function() {
+        //     console.log('点击');
+        // }
+        // console.log(bottom1.width);
+        // bottom1.kn();
+
+        // var car = {
+        //     color: '黑色',
+        //     weight: '100kg',
+        //     brand: '奥迪',
+        //     gn: function() {
+        //         console.log('拉货');
+        //     }
+
+        // }
+        // alert(car.color);
+
+
+
+        // var myMath = {
+        //     PI: 3.141592653,
+        //     max: function() {
+        //         var max = arguments[0];
+        //         for (var i = 0; i < arguments.length; i++) {
+        //             if (arguments[i] > max) {
+        //                 max = arguments[i];
+        //             }
+        //         }
+        //         return max;
+        //     },
+        //     min: function() {
+        //         var min = arguments[0];
+        //         for (i = 0; i < arguments.length; i++) {
+        //             if (arguments[i] < min) {
+        //                 min = arguments[i];
+        //             }
+        //         }
+        //         return min;
+
+        //     }
+        // }
+        // console.log(myMath.PI);
+        // console.log(myMath.max(1, 2, 3, 5, 8));
+
+        /*  function getRandom(min, max) {
+             return Math.floor(Math.random() * (max - min + 1)) + min;
+         }
+         var random = getRandom(1, 10);
+         while (true) {
+             var num = prompt('猜一个1~10の数字');
+             if (num == random) {
+                 alert('你猜对了');
+                 break;
+             } else if (num > random) {
+                 alert('你猜大了');
+             } else {
+                 alert('你猜小了');
+             }
+
+         } */
+        /*  function getTime() {
+             var mydate = new Date();
+             var year = mydate.getFullYear();
+             var month = mydate.getMonth() + 1;
+             var date = mydate.getDate();
+             var day = mydate.getDay();
+             var weekday = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+             // 定义数组对象, 给每个数组项赋
+             var h = mydate.getHours();
+             h = h < 10 ? '0' + h : h;
+             var m = mydate.getMinutes();
+             m = m < 10 ? '0' + m : m;
+             var s = mydate.getSeconds();
+             s = s < 10 ? '0' + s : s;
+             return '今天是' + year + '年' + month + '月' + date + '日 ' + weekday[day] + h + '时' + m + '分' + s + '秒';
+         }
+         console.log(getTime()); */
+
+        //倒计时效果
+        /* function countDown(time) {
+            var nowTime = +new Date(); //当前时间的总毫秒数
+            var inputTime = +new Date(time); //用户输入时间的总毫秒数
+            var times = (inputTime - nowTime) / 1000; //times是剩余时间的总毫秒数
+            var d = parseInt(times / 60 / 60 / 24); //天
+            d = d < 10 ? '0' + d : d;
+            var h = parseInt(times / 60 / 60 % 24); //时
+            h = h < 10 ? '0' + h : h;
+            var m = parseInt(times / 60 % 60); //分
+            m = m < 10 ? '0' + m : m;
+            var s = parseInt(times % 60); //秒
+            return d + '天' + h + '时' + m + '分' + s + '秒';
+
+        }
+        console.log(countDown('2020-11-28 15:00:00')); */
+
+
+        //翻转数组
+        /*  function reverse(arr) {
+             if (arr instanceof Array) {
+                 var newArr = [];
+                 for (var i = arr.length - 1; i >= 0; i--) {
+                     newArr[newArr.length] = arr[i];
+                 }
+                 return newArr;
+             } else {
+                 return 'error 这个要求数组格式[1,2,3]';
+
+             }
+         }
+         alert(reverse([1, 2, 3, 4])); */
+
+        //筛选数组
+        // var arr = [1500, 1200, 2000, 2100, 1800];
+        // var newArr = [];
+        // for (var i = 0; i < arr.length; i++) {
+        //     if (arr[i] > 2000) {
+        //         newArr.push(arr[i]);
+        //     }
+        // }
+        // console.log(newArr);
+
+        //数组去重
+        // function unique(arr) {
+        //     var newArr = [];
+        //     for (i = 0; i < arr.length; i++) {
+        //         if (newArr.indexOf(arr[i]) == -1) {
+        //             newArr.push(arr[i]);
+        //         }
+        //     }
+        //     return newArr;
+        // }
+        // var demo = unique(['c', 'c', 1, 1, 3, 3, 4, 4]);
+        // console.log(demo);
+
+        //筛选o出现的索引号
+        /*   var str = 'abcoefghozzorrossooo';
+          var index = str.indexOf('o');
+          while (index !== -1) {
+              console.log(index);
+              index = str.indexOf('o', index + 1)
+          } */
+
+
+
+        //筛选那个字母出现的次数最多
+        var str = 'abcddefghijgbdxcshdgwybaznjwdaa';
+        var o = {};
+        for (var i = 0; i < str.length; i++) {
+            var chars = str.charAt(i);
+            if (o[chars]) {
+                o[chars]++;
+            } else {
+                o[chars] = 1;
+            }
+        }
+        console.log(o);
+        var max = 0;
+        var ch = '';
+        for (var k in o) {
+            if (o[k] > max) {
+                max = o[k];
+                ch = k;
+            }
+        }
+        console.log(max);
+        console.log('最多字符是' + ch);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

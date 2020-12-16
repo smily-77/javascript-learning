@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+
+    <script>
+        console.log(location.search); //?uname=red
+        var string1 = location.search.substr(1); //uname=red
+        var arr = string1.split("="); //arr['uname', 'red']
+        console.log(arr);
+        var div = document.querySelector('div');
+        div.innerHTML = arr[1] + '！欢迎你哦~'
+    </script>
+
+</body>
+
+</html>

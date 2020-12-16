@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #fff;
+        }
+        
+        div {
+            width: 600px;
+            margin: 100px auto;
+        }
+        
+        .message {
+            display: inline-block;
+            font-size: 12px;
+            color: #999;
+            background: url(../photo/mess.png) no-repeat left center;
+            padding-left: 20px;
+        }
+        
+        .wrong {
+            color: red;
+            background: url(../photo/wrong.png) no-repeat left center;
+        }
+        
+        .right {
+            color: green;
+            background: url(../photo/right.png) no-repeat left center;
+        }
+    </style>
+</head>
+
+<body>
+    <button>开关灯</button>
+    <script>
+        var btn = document.querySelector('button');
+        var body = document.body;
+        var flag = 0;
+        btn.onclick = function() {
+            if (flag == 0) {
+                body.style.backgroundColor = 'black';
+                flag = 1;
+            } else {
+                body.style.backgroundColor = '#fff';
+                flag = 0;
+            }
+
+
+        }
+    </script>
+    <div class="register">
+        <input type="password" class="ipt">
+        <p class="message">请输入6~16位的密码</p>
+    </div>
+    <script>
+        var ipt = document.querySelector('.ipt');
+        var message = document.querySelector('.message');
+        ipt.onblur = function() {
+            if (this.value.length < 6 || this.value.length > 16) {
+                message.className = 'message wrong';
+                message.innerHTML = '位数不符合要求，要求6~16位数字'
+            } else {
+                message.className = 'message right';
+                message.innerHTML = '位数符合要求'
+            }
+        }
+    </script>
+</body>
+
+</html>

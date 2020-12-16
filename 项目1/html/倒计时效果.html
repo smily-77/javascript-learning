@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            margin: 100px auto;
+        }
+        
+        span {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background: #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 2);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span class="hour">1</span>
+        <span class="minute">2</span>
+        <span class="second">3</span>
+    </div>
+    <script>
+        var hour = document.querySelector('.hour');
+        var minute = document.querySelector('.minute');
+        var second = document.querySelector('.second');
+        var inputTime = +new Date('2020-12-5 19:57:00'); //返回用户输入时间的毫秒数
+        countDown(); //先调用函数，填补定时器调用之前的一秒钟空白
+        var timer = setInterval(countDown, 1000); //启动定时器
+
+
+        function countDown() {
+            var nowTime = +new Date(); //返回现在时间的毫秒数
+            var times = (inputTime - nowTime) / 1000; //剩余总时间的毫秒数
+            if (times < 0) {
+                clearInterval(timer);
+            } else {
+                var h = parseInt(times / 60 / 60 % 24); //时
+                if (h < 1) {
+                    h = '00';
+                } else if (h < 10) {
+                    h = '0' + h;
+                };
+                hour.innerHTML = h + '时'; //把剩余的小时给小时盒子
+                var m = parseInt(times / 60 % 60); //分
+                if (m < 1) {
+                    m = '00';
+                } else if (m < 10) {
+                    m = '0' + m;
+                };
+                minute.innerHTML = m + '分'; //把剩余的分给分的盒子
+                var s = parseInt(times % 60);
+                if (s < 1) {
+                    s = '00';
+
+                } else if (s < 10) {
+                    s = '0' + s;
+                };
+                second.innerHTML = s + '秒'; //把剩余的秒分给盒子
+            }
+        }
+    </script>
+</body>
+
+</html>

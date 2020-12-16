@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .wrap {
+            width: 300px;
+            margin: 100px auto;
+        }
+        
+        table {
+            border-collapse: clooapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+            width: 300px;
+        }
+        
+        th,
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        th {
+            background: #09c;
+            font: bold 16px;
+            color: #fff;
+        }
+        
+        td {
+            font: 14px "微软雅黑";
+        }
+        
+        tbody tr {
+            background: #f0f0f0;
+        }
+        
+        .bg {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="j_cbAll"></th>
+                    <th>商品</th>
+                    <th>价钱</th>
+                </tr>
+            </thead>
+            <tbody id="j_tb">
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>iphon8</td>
+                    <td>8000</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>iphon7</td>
+                    <td>7000</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>iphon6</td>
+                    <td>6000</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>iphon5</td>
+                    <td>5000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var trs = document.getElementById('j_tb').querySelectorAll('tr');
+        for (var i = 0; i < trs.length; i++) {
+            trs[i].onmouseover = function() {
+                this.className = 'bg';
+            }
+            trs[i].onmouseout = function() {
+                this.className = '';
+            }
+        }
+        var j_cbAll = document.getElementById('j_cbAll');
+        var j_tbs = document.getElementById('j_tb').querySelectorAll('input');
+        //当点击全选按钮时，其它按钮全部被选择
+        j_cbAll.onclick = function() {
+                for (var i = 0; i < j_tbs.length; i++) {
+                    j_tbs[i].checked = this.checked;
+                }
+            }
+            //其它按钮全部被选择时，全选按钮被选择
+        for (var i = 0; i < j_tbs.length; i++) {
+            j_tbs[i].onclick = function() {
+
+                var flag = true;
+                for (var i = 0; i < j_tbs.length; i++) {
+                    if (!j_tbs[i].checked) {
+                        flag = false;
+                        break;
+
+                    }
+                }
+                j_cbAll.checked = flag;
+
+
+            }
+        }
+    </script>
+</body>
+
+</html>s
