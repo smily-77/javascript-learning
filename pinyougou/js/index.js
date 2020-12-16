@@ -53,40 +53,53 @@ window.addEventListener('load', function() {
     var index = li.getAttribute('index');
     var num = 0; //控制右边按钮图片的移动
     var circle = 0; //控制小圆圈的播放
+    var flag = true; //节流阀
 
-    //右边按钮gi
+    //右边按钮
     arrow_r.addEventListener('click', function() {
-        //当走到克隆的下一张图片时，快速跳到第一张图片，再移动到第二张图片；
-        if (num == ul.children.length - 1) {
-            ul.style.left = '0';
-            num = 0;
-        }
-        num++;
-        animate(ul, -num * focusWidth);
-        circle++;
-        //如果circle==4说明走到最克隆的图片了
-        if (circle == ol.children.length) {
-            circle = 0;
+        if (flag) {
+            flag = false; //关闭节流阀
+            //当走到克隆的下一张图片时，快速跳到第一张图片，再移动到第二张图片；
+            if (num == ul.children.length - 1) {
+                ul.style.left = '0';
+                num = 0;
+            }
+            num++;
+            animate(ul, -num * focusWidth, function() {
+                flag = true; //打开节流阀
+            });
+            circle++;
+            //如果circle==4说明走到最克隆的图片了
+            if (circle == ol.children.length) {
+                circle = 0;
+            }
+
+            circleChange();
         }
 
-        circleChange();
     })
 
 
     arrow_l.addEventListener('click', function() {
-        //当走到第一张图片时，快速跳到克隆的图片，再到第四张；
-        if (num == 0) {
-            num = ul.children.length - 1;
-            ul.style.left = -num * focusWidth + 'px';
+        if (flag) {
+            flag = false;
+            //当走到第一张图片时，快速跳到克隆的图片，再到第四张；
+            if (num == 0) {
+                num = ul.children.length - 1;
+                ul.style.left = -num * focusWidth + 'px';
+            }
+            num--;
+            animate(ul, -num * focusWidth, function() {
+                flag = true;
+            });
+            circle--;
+            //如果circle<0说明走到第一张图片了
+            if (circle < 0) {
+                circle = ol.children.length - 1;
+            }
+            circleChange();
         }
-        num--;
-        animate(ul, -num * focusWidth);
-        circle--;
-        //如果circle<0说明走到第一张图片了
-        if (circle < 0) {
-            circle = ol.children.length - 1;
-        }
-        circleChange();
+
 
     })
 
