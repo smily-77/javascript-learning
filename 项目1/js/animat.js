@@ -9,9 +9,10 @@ function animate(obj, target, callBack) {
         if (obj.offsetLeft == target) {
             clearInterval(obj.timer); // 动画结束，本质是定时器结束
             //如果有回调函数调用回调函数，回调函数写在定时器结束里
-            if (callBack) {
+            /* if (callBack) {
                 callBack();
-            }
+            } */
+            callBack && callBack();
         }
         obj.style.left = obj.offsetLeft + step + 'px';
 

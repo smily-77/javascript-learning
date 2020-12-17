@@ -40,6 +40,11 @@
             position: absolute;
             bottom: 0;
         }
+        
+        .goBack {
+            display: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -54,6 +59,7 @@
         var sliderBar = document.querySelector('.slider-bar');
         var banner = document.querySelector('.banner');
         var bannerTop = banner.offsetTop;
+        var goBack = document.querySelector('.goBack');
         //当我们侧边栏固定定位后应该变化的数值
         var sliderBarTop = sliderBar.offsetTop - bannerTop;
         //页面滚动事件scroll
@@ -62,12 +68,45 @@
             if (window.pageYOffset >= bannerTop) {
                 sliderBar.style.position = 'fixed';
                 sliderBar.style.top = sliderBarTop + "px";
+                goBack.style.display = 'block';
 
             } else {
                 sliderBar.style.position = 'absolute';
                 sliderBar.style.top = '300px';
+                goBack.style.display = 'none';
+
             }
         })
+        goBack.addEventListener('click', function() {
+
+            // window.scroll(0, 0);  回到顶部没有过度效果
+            animate(window, 0);
+
+
+        })
+
+        function animate(obj, target, callBack) {
+
+            clearInterval(obj.timer); // 清除上一次的定时器
+            obj.timer = setInterval(function() {
+                // var step = (target - obj.offsetLeft) / 30; //缓慢动画每次移动的步长
+                var step = (target - window.pageYOffset) / 30
+                step = step > 0 ? Math.ceil(step) : Math.floor(step); //step>0向上取整数，step<0像下取整数，
+                //使移动数达到target整数
+
+                if (window.pageYOffset == target) {
+                    clearInterval(obj.timer); // 动画结束，本质是定时器结束
+                    //如果有回调函数调用回调函数，回调函数写在定时器结束里
+                    // if (callBack) {
+                    //     callBack();
+                    // }
+                    callBack && callBack();
+                }
+                //    obj.style.left = obj.offsetLeft + step + 'px';
+
+                window.scroll(0, window.pageYOffset + step);
+            }, 15)
+        }
     </script>
 </body>
 
