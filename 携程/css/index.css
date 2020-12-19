@@ -25,6 +25,20 @@ ul {
 }
 
 
+/* goback模块 */
+
+.goback {
+    display: none;
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    width: 38px;
+    height: 38px;
+    background: url(../images/back.png) no-repeat;
+    background-size: 38px 38px;
+}
+
+
 /* 搜索 */
 
 .search-index {
@@ -95,12 +109,47 @@ ul {
 /* 焦点图 */
 
 .focus {
+    overflow: hidden;
+    position: relative;
     /* 上面搜索盒子用了固定定位，固定定位不占高度，会把下面标准流的盒子覆盖掉，所以给一个padding值 */
     margin-top: 44px;
 }
 
+.focus ul {
+    overflow: hidden;
+    width: 500%;
+    margin-left: -100%;
+}
+
+.focus ul li {
+    float: left;
+    width: 20%;
+}
+
 .focus img {
     width: 100%;
+}
+
+.circle {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.circle li {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background: red;
+    border-radius: 2px;
+    transition: all .3s;
+    z-index: 222;
+}
+
+.circle li.current {
+    width: 15px;
 }
 
 
