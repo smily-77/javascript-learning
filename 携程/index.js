@@ -46,6 +46,8 @@ window.addEventListener('load', function() {
         //手指触摸时停止定时器
         clearInterval(timer);
     });
+
+
     //移动·手指，计算手指滑动的距离，并移动盒子
     ul.addEventListener('touchmove', function(e) {
         //计算距离
@@ -59,9 +61,8 @@ window.addEventListener('load', function() {
         flag = true;
     });
 
+    
     //手指离开 根据移动距离去判断是回弹还是播放上一张下一张
-
-
     ul.addEventListener('touchend', function(e) {
         if (flag) {
             if (Math.abs(moveX) > 50) {
