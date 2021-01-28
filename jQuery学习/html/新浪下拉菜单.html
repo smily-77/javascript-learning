@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script SRC="../jQuery/jquery.mini.js"></script>
+    <style>
+        li {
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        
+        a:hover {
+            background: #ccc;
+        }
+        
+        .nav {
+            margin: 100px;
+            background: pink;
+        }
+        
+        .nav>li {
+            position: relative;
+            width: 80px;
+            height: 40px;
+            float: left;
+            text-align: center;
+            margin: 0 5px;
+        }
+        
+        .nav li a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            line-height: 40px;
+            color: #333;
+        }
+        
+        .uls {
+            display: none;
+            position: absolute;
+            top: 34px;
+            left: 0;
+            width: 100%;
+            border-left: 1px solid #FECC5B;
+            border-right: 1px solid #FECC5B;
+            padding: 0;
+        }
+        
+        .uls li {
+            border-bottom: 1px solid #FECC5B;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="nav">
+        <li>
+            <a href="#">微博</a>
+
+            <ul class="uls">
+                <li><a href="#">私信</a></li>
+                <li><a href="#">私信</a></li>
+                <li><a href="#">私信</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">微博</a>
+
+            <ul class="uls">
+                <li><a href="#">私信</a></li>
+                <li><a href="#">私信</a></li>
+                <li><a href="#">私信</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">微博</a>
+
+            <ul class="uls">
+                <li><a href="#">私信</a></li>
+                <li><a href="#">私信</a></li>
+                <li><a href="#">私信</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">微博</a>
+
+            <ul class="uls">
+                <li><a href="#">私信</a></li>
+                <li><a href="#">私信</a></li>
+                <li><a href="#">私信</a></li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        $(function() {
+            /*   $(".nav>li").mouseover(function() {
+                  $(this).children("ul").slideDown(200);
+              })
+              $(".nav>li").mouseout(function() {
+                  $(this).children("ul").slideUp(200);
+              }) */
+
+            /*   //  1.事件切换 hover 就是鼠标经过离开的复合写法
+              $(".nav>li").hover(function() {
+                  $(this).children("ul").stop().slideDown(200);
+              }, function() {
+                  $(this).children("ul").stop().slideUp(200);
+              }) */
+
+
+            //2.事件切换hover
+            $(".nav>li").hover(function() {
+                //stop()停止动画排队
+                $(this).children("ul").stop().slideToggle();
+            })
+
+
+
+
+
+
+        })
+    </script>
+</body>
+
+</html>

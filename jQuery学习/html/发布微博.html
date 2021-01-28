@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jQuery/jquery.mini.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .box {
+            width: 800px;
+            height: 900px;
+            margin: 100px auto;
+        }
+        
+        span {
+            display: block;
+            width: 80px;
+            height: 20px;
+            margin: 5PX auto;
+            line-height: 20px;
+            text-align: center;
+            border-radius: 5PX;
+            background-color: pink;
+            transform: translateX(-50%);
+        }
+        
+        .txt {
+            width: 700px;
+            height: 300px;
+            outline: none;
+        }
+        
+        ul {
+            width: 700px;
+            height: 300px;
+            position: relative;
+        }
+        
+        li {
+            display: none;
+            height: 30px;
+            list-style: none;
+            border-bottom: 1px solid #ccc;
+        }
+        
+        ul a {
+            position: absolute;
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="weibo">
+        <span>微博发布</span>
+        <textarea name="" class="txt" cols="30" rows="10"></textarea>
+        <button class="btn">发布</button>
+        <ul>
+
+        </ul>
+    </div>
+    <script>
+        $(function() {
+            //点击发布，发布内容
+            $(".btn").on("click", function() {
+                var li = $("<li></li>");
+                li.html($(".txt").val() + "<a href='javascript:;'> 删除</a>");
+                $("ul").prepend(li);
+                li.slideDown();
+                $(".txt").val("");
+            })
+
+
+            //点击删除，删除内容
+            $("ul").on("click", "a", function() { //on可以给未来创建的元素添加事件
+                $(this).parent().slideUp(function() { //slideUp里的回调函数
+                    $(this).remove();
+                });
+            })
+        })
+    </script>
+</body>
+
+</html>

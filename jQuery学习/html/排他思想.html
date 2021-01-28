@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jQuery/jquery.mini.js"></script>
+</head>
+
+<body>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <script>
+        $(function() {
+            //隐试迭代 添加绑定事件
+            $("button").click(function() {
+                //当前元素背景颜色变色
+                $(this).css("background", "pink");
+                //  隐试迭代   其余兄弟去掉背景颜色
+                $(this).siblings("button").css("background", "");
+            });
+        })
+    </script>
+
+
+</body>
+
+</html>

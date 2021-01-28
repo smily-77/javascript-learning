@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jQuery/jquery.mini.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .tab {
+            width: 978px;
+            margin: 100px auto;
+            background: pink;
+        }
+        
+        .tab_list {
+            height: 39px;
+            border: 1px solid #ccc;
+            background: #f1f1f1;
+        }
+        
+        .tab_list li {
+            float: left;
+            height: 39px;
+            line-height: 39px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+            list-style: none;
+        }
+        
+        .tab_list .current {
+            background: #c81623;
+            color: #fff;
+        }
+        
+        .item {
+            display: none;
+            height: 100px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后与保障</li>
+                <li>商品评价</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="tab_con">
+            <div class="item" style="display:block">
+                商品介绍模板内容
+            </div>
+            <div class="item">
+                规格与包装内容
+            </div>
+            <div class="item">
+                售后保障模块内容
+            </div>
+            <div class="item">
+                商品评价（50000）模块内容
+            </div>
+            <div class="item">
+                手机社区模块内容
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    //jquery
+    $(function() {
+        //隐式迭代绑定事件
+        $(".tab_list li").click(function() {
+            //链式编程操作
+            $(this).addClass("current").siblings().removeClass("current");
+            var index = $(this).index();
+            //链式编程操作
+            $(".tab_con .item").eq(index).show().siblings().hide();
+
+        })
+    })
+
+    /* //js
+    var tablist = document.querySelector(".tab_list");
+    var lis = tablist.querySelectorAll("li");
+    var tabcon = document.querySelector(".tab_con");
+    var divs = tabcon.querySelectorAll("div");
+
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].setAttribute('index', i);
+        lis[i].addEventListener("click", function() {
+            var index = this.getAttribute('index');
+            for (var j = 0; j < lis.length; j++) {
+                lis[j].className = "";
+                divs[j].style.display = "none";
+            }
+            this.className = "current";
+            divs[index].style.display = "block";
+        })
+    } */
+</script>
+
+</html>
