@@ -1,3 +1,4 @@
+//轮播图
 window.addEventListener('load', function() {
     var arrow_l = document.querySelector('.arrow_l');
     var arrow_r = document.querySelector('.arrow_r');
@@ -119,6 +120,55 @@ window.addEventListener('load', function() {
         //手动点击右侧按钮
         arrow_r.click();
     }, 2000)
+
+
+})
+$(function() {
+    //当我们点击了li此时不需要执行 页面滚动事件里面的 li 的背景选择添加current
+    //节流阀
+    var flag = true;
+
+    //1.到达指定区域时导航条的出现和隐藏
+    var toolTop = $(".recommend").offset().top;
+    toggleTop();
+
+    function toggleTop() {
+        if ($(document).scrollTop() >= toolTop) {
+            $(".fixedtool").fadeIn();
+        } else {
+            $(".fixedtool").fadeOut();
+        }
+    }
+    $(window).scroll(function() {
+        toggleTop();
+        //3.页面滚动到某个内容区域，左侧电梯导航小li相应添加和删除current类名
+        if (flag) {
+            $(".floor .w").each(function(i, ele) {
+                if ($(document).scrollTop() >= $(ele).offset().top) {
+                    $(".fixedtool li").eq(i).addClass("current").siblings().removeClass();
+                }
+
+            })
+        }
+    })
+
+    //2.点击导航条可以滚动到相应内容区域
+    $(".fixedtool li").click(function() {
+        flag = false;
+        console.log($(this).index());
+        //每次点击li。需要计算出页面要去往的位置
+        //选出对应索引号的内容区域的盒子  计算它的offset（）.top
+        var current = $(".floor .w").eq($(this).index()).offset().top;
+        //页面滚动效果
+        $("body,html").stop().animate({
+                scrollTop: current
+            }, function() {
+                flag = true
+            })
+            //点击之后，让当前的li 添加current类名，兄弟移除current类名
+        $(this).addClass("current").siblings().removeClass();
+
+    })
 
 
 })

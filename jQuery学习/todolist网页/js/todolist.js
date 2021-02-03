@@ -71,8 +71,8 @@ $(function() {
         var data = getDate();
         //遍历之前先要清空ol里面的元素内容
         $("ol,ul").empty();
-        var todoCount = 0;
-        var doneCount = 0;
+        var todoCount = 0; //正在进行的条数
+        var doneCount = 0; //已经完成的条数
         //遍历数组
         $.each(data, function(i, n) {
             if (n.done) {

@@ -270,8 +270,8 @@
 }
 
 .fixedtool {
-    position: absolute;
-    top: 300px;
+    position: fixed;
+    top: 200px;
     left: 50%;
     margin-left: -676px;
     width: 66px;
