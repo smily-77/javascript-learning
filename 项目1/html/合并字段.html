@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var province = "province:'湖南/株洲/天元区'";
+        var region = "region:'湖南工业大学泰山路三食堂'";
+        console.log('"' + cutting(province) + cutting(region) + '"');
+
+        function cutting(name) {
+            var arr = name.split(":");
+            var arr1 = arr[1].split("'");
+            return arr1[1];
+        }
+    </script>
+</body>
+
+</html>
