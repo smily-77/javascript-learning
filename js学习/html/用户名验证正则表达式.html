@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .right {
+            color: green;
+            font-size: 14px;
+        }
+        
+        .wrong {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" class="uname"><span> 请输入用户名</span>
+    <script>
+        var reg = /^[a-zA-Z0-9_-]{6,16}$/;
+        var uname = document.querySelector('.uname');
+        var span = document.querySelector('span');
+        uname.onblur = function() {
+            if (reg.test(this.value)) {
+                span.className = 'right';
+                span.innerHTML = '用户格式输入正确';
+            } else {
+                span.className = 'wrong';
+                span.innerHTML = '用户格式输入不正确';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

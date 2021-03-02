@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </nav>
+    <script>
+        var lis = document.querySelectorAll('li');
+        for (var i = 0; i < lis.length; i++) {
+            //利用for循坏创建4个立即执行函数
+            //立即执行函数成为小闭包是因为立即执行函数里面的任何一个函数都可以使用i变量
+            (function(i) {
+                lis[i].onclick = function() {
+                    console.log(i);
+                }
+            })(i)
+        }
+
+        //闭包  3秒之后打印所有li元素的内容
+        for (var i = 0; i < lis.length; i++) {
+            (function(i) {
+                setTimeout(function() {
+                    console.log(lis[i].innerHTML)
+                }, (3000))
+
+            })(i)
+        }
+
+
+        //闭包解决打车问题    3公里内起步价13  3公里之后每增加一公里加5   拥堵加10
+        var car = (function() {
+            var start = 13; //起步价
+            var total = 0; //总价
+            return {
+                //正常的总价
+                price: function(n) {
+                    if (n <= 3) {
+                        total = start;
+                    } else {
+                        total = start + (n - 3) * 5
+                    }
+                    return total;
+                },
+                //拥堵之后的费用
+                yd: function(flag) {
+                    return flag ? total + 10 : total;
+                }
+
+            }
+        })();
+        console.log(car.price(5));
+        console.log(car.yd(true));
+    </script>
+</body>
+
+</html>
