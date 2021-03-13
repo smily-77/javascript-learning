@@ -1,0 +1,9 @@
+
+{{extend './common/layout.art'}}
+{{block 'content'}}
+<div>{{msg}}</div>
+{{/block}}
+
+{{block 'link'}}
+<link rel="stylesheet" type="text/css" href="./mian/1.css">
+{{/block}}

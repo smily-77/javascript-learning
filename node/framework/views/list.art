@@ -1,0 +1,14 @@
+
+{{ msg }}
+
+<ul>
+	{{each users}}
+	<li>
+		{{$value.name}}
+		{{$value.age}}
+        {{each $value.hobbies}}
+        <span>{{$value}}</span>
+        {{/each}}
+	</li>
+	{{/each}}
+</ul>
