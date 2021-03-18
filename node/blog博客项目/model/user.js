@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
     },
     //0：启用  1：禁用
     state: {
-        typr: Number,
+        type: Number,
         default: 0
     }
 });

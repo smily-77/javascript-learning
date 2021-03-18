@@ -5,8 +5,21 @@ const path = require('path');
 const bodyParser = require('body-parser');
 //引入express-session模块
 const session = require('express-session');
+//引入dateformate  规范日期格式
+const dateFormat = require('dateformat');
+//导入art-tempale模板引擎
+const template = require('art-template');
+//读取配置信息
+const morgan = require('morgan');
+//引入config模块 判断开发环境 读取配置信息
+const config = require('config');
+
 //创建服务器
 const app = express();
+//导入模板变量
+template.defaults.imports.dateFormat = dateFormat;
+
+
 
 //用什么样的模板引擎渲染什么样的后缀文件
 app.engine('art', require('express-art-template'));
@@ -24,7 +37,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
     secret: 'secret key',
     resave: false, //添加 resave 选项
-    saveUninitialized: true, //添加 saveUninitialized 选项
+    saveUninitialized: false, //添加 saveUninitialized 选项
+    //设置过期时间
     cookie: {
         maxAge: 24 * 60 * 60 * 1000
     }
@@ -36,6 +50,20 @@ require('./model/connect');
 
 //测试创建数据库
 /* require('./model/user') */
+
+if (process.env.NODE_ENV == 'development') {
+    //当前是开发环境
+    console.log('当前是开发环境');
+    //在开发环境中 将客户端发送到服务器的请求信息打印到控制台中
+    app.use(morgan('dev'));
+
+} else {
+    console.log('当前是生产环境');
+}
+
+//
+
+console.log(config.get('title'));
 
 
 //引入路由模块
@@ -55,7 +83,21 @@ app.use('/home', home);
 app.use('/admin', admin);
 
 
+//捕获错误
+app.use((err, req, res, next) => {
+    //将字符串类型变为对象类型
+    const result = JSON.parse(err);
+    // res.redirect(`${result.path}?message=${result.message}`)
+    let params = [];
+    for (let attr in result) {
+        if (attr != 'path') {
+            params.push(attr + '=' + result[attr])
+        }
+    }
+    res.redirect(`${result.path}?${params.join('&')}`)
 
+
+})
 
 
 app.listen(80);

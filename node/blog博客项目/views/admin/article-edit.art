@@ -10,31 +10,36 @@
             <div class="title">
                 <h4>5b9a716cb2d2bf17706bcc0a</h4>
             </div>
+            <!-- enctype 指定表单数据编码类型
+          默认为：  application/x-www-form-urlencoded     name=zhansan&age=20
+            multipart/form-data 将表单数据编码成二进制类型  上传文件时必须加上此属性
+            -->
             <!-- /分类标题 -->
-            <form class="form-container">
+            <form class="form-container" method="post" action="/admin/article-add"
+            enctype="multipart/form-data">
                 <div class="form-group">
                     <label>标题</label>
-                    <input type="text" class="form-control" placeholder="请输入文章标题">
+                    <input type="text" class="form-control" placeholder="请输入文章标题" name="title">
                 </div>
                 <div class="form-group">
                     <label>作者</label>
-                    <input type="text" class="form-control" readonly>
+                    <input type="text" class="form-control" readonly name="author" value="{{@userInfo._id}}">
                 </div>
                 <div class="form-group">
                     <label>发布时间</label>
-                    <input type="date" class="form-control">
+                    <input type="date" class="form-control" name="publishDate" name="publishDate">
                 </div>
                 
                 <div class="form-group">
                    <label for="exampleInputFile">文章封面</label>
-                   <input type="file">
+                   <input type="file" name="cover" id="file">
                    <div class="thumbnail-waper">
-                       <img class="img-thumbnail" src="">
+                       <img class="img-thumbnail" src="" id="preview">
                    </div>
                 </div>
                 <div class="form-group">
                     <label>内容</label>
-                    <textarea class="form-control" id="editor"></textarea>
+                    <textarea name="content" class="form-control" id="editor"></textarea>
                 </div>
                 <div class="buttons">
                     <input type="submit" class="btn btn-primary">
@@ -62,5 +67,24 @@
 
         // 获取数据
         // const editorData = editor.getData();
+
+
+
+//选择文件上传控件
+var file=document.querySelector('#file');
+var preview =document.querySelector('#preview');
+//当用户选择文件完以后
+file.onchange=function(){
+    //1.创建文件读取对象
+    var reader = new FileReader();
+    //   this.files[0]  用户选择的文件列表
+    //2.读取选中的文件
+    reader.readAsDataURL(this.files[0]);
+    //3.监听onload事件
+    reader.onload=function(){
+        preview.src=reader.result;
+    }
+}
+
     </script>
     {{/block}}

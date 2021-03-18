@@ -25,10 +25,21 @@ admin.post('/user-edit', require('./admin/user-edit-fn'));
 //进入用户界面
 admin.get('/user', require('./admin/userPage'));
 
-//捕获错误
-app.use((err.req, res, next) => {
+//修改
+admin.post('/user-modify', require('./admin/user-modify'));
 
-})
+//建立删除用户路由
+admin.get('/delete', require('./admin/user-delete'));
+
+//建立文章列表路由
+admin.get('/article', require('./admin/article'));
+
+//建立文章编辑路由
+admin.get('/article-edit', require('./admin/article-edit'));
+
+//建立文章添加页面路由
+admin.post('/article-add', require('./admin/article-add'))
+
 
 //将路由对象作为模块成员进行导出
 module.exports = admin;

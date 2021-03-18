@@ -7,6 +7,11 @@ const guard = (req, res, next) => {
         res.redirect('/admin/login');
 
     } else {
+        //如果用户是登录状态而且是一个普通用户
+        if (req.session.role == 'normal') {
+            //跳转到文章页面
+            return res.redirect('/home')
+        }
         next();
     }
 }

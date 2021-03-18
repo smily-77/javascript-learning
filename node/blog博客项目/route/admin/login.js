@@ -26,8 +26,20 @@ module.exports = async(req, res) => {
         if (isEqual) {
             //将用户名存储在请求对象中
             req.session.username = user.username;
+            req.session.role = user.role;
+
             //app.locals对象，使所有页面都能拿到user的信息
             req.app.locals.userInfo = user;
+            //对用户角色进行判断
+            if (user.role == 'admin') {
+                //重定向到用户列表页面
+                res.redirect('/admin/user');
+
+            } else {
+                //重定向到博客首页
+                res.redirect('/home/')
+            }
+
 
             //如果比对相同，则登录成功
             //登陆成功后页面重定向  跳转到user页面
