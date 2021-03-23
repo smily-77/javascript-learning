@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>实现跨域功能</title>
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <style type="text/css">
+        .container {
+            padding-top: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form id="loginForm">
+            <div class="form-group">
+                <label>用户名</label>
+                <input type="text" name="username" class="form-control" placeholder="请输入用户名">
+            </div>
+            <div class="form-group">
+                <label>密码</label>
+                <input type="password" name="password" class="form-control" placeholder="请输入用密码">
+            </div>
+            <input type="button" class="btn btn-default" value="登录" id="loginBtn">
+            <input type="button" class="btn btn-default" value="检测用户登录状态" id="checkLogin">
+        </form>
+    </div>
+    <script type="text/javascript">
+        var loginform = document.querySelector("#loginForm");
+        var loginbtn = document.querySelector("#loginBtn");
+        var checklogin = document.querySelector("#checkLogin");
+        //为登录按钮添加表单点击事件
+        loginbtn.onclick = function() {
+            //将普通表单转化为formData对象
+            var formData = new FormData(loginform);
+            //创建一个ajax
+            var xhr = new XMLHttpRequest();
+            //配置坏境
+            xhr.open('post', 'http://localhost:3001/login');
+            //添加withCredentials属性，解决跨域携带cookie问题
+            xhr.withCredentials = true;
+            //发送请求
+            xhr.send(formData);
+            //监听xhr下面的onload事件
+            xhr.onload = function() {
+                console.log(xhr.responseText)
+            }
+        };
+
+        //为检测登录状态创建点击事件
+        checklogin.onclick = function() {
+            //创建一个ajax
+            var xhr = new XMLHttpRequest();
+            //配置环境
+            xhr.open('get', 'http://localhost:3001/checkLogin');
+            //设置withCredentials属性，允许跨域请求携带cookie信息
+            xhr.withCredentials = true;
+            //发送请求
+            xhr.send();
+            //
+            xhr.onload = function() {
+                console.log(xhr.responseText)
+
+            }
+        }
+    </script>
+</body>
+
+</html>

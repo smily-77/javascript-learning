@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">提交</button>
+    <script>
+        function fn3(data) {
+            console.log('被调用了');
+            console.log(data);
+        }
+    </script>
+    <script>
+        var btn = document.querySelector('#btn');
+        btn.onclick = function() {
+            //创建script标签
+            var script = document.createElement('script');
+            //为script标签添加src属性
+            script.src = "http://localhost:3001/better?callback=fn3";
+            //将script标签放到页面中
+            document.body.appendChild(script);
+            //为script标签添加onload事件
+            script.onload = function() {
+                document.body.removeChild(script)
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">提交</button>
+
+    <script>
+        var btn = document.querySelector('#btn');
+        btn.onclick = function() {
+            jsonp({
+                url: 'http://localhost:3001/better',
+                data: {
+                    name: '杨洋',
+                    age: '22'
+                },
+                success: function fn3(data) {
+                    console.log('函数被调用了');
+                    console.log(data);
+                }
+            })
+
+        }
+
+        function jsonp(options) {
+            //myJsonp01243546
+            var fnName = 'myJsonp' + Math.random().toString().replace('.', '');
+            //不是一个全局函数，想办法变成全局函数
+            window[fnName] = options.success;
+            //创建一个script标签
+            var script = document.createElement('script');
+            //存放拼接字符串
+            var params = '';
+            //拼接传进来的参数
+            for (var attr in options.data) {
+                params += '&' + attr + '=' + options.data[attr]
+            }
+            //添加src属性
+            script.src = options.url + '?callback=' + fnName + params;
+            document.body.appendChild(script);
+            //script添加onload属性
+            script.onload = function() {
+                document.body.removeChild(script);
+            }
+
+        }
+    </script>
+</body>
+
+</html>

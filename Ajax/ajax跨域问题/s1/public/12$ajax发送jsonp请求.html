@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="btn">提交</button>
+    <script src="jquery/jquery.mini.js"></script>
+    <script>
+        $('#btn').on('click', function() {
+
+
+            //发送jsonp请求
+
+            // $.ajax({
+            //     url: 'http://localhost:3001/better',
+            //     //指定当前发送jsonp请求
+            //     dataType: 'jsonp',
+            //     success: function(response) {
+            //         console.log(response)
+            //     }
+            // })
+
+
+
+            //$.get() 
+
+            /*    $.get('http://localhost:3000/base', {
+                   name: 'zh',
+                   age: 23
+               }, function(response) {
+                   console.log(response)
+               }) */
+
+
+
+            // $.post()方法
+
+            // $.post('http://localhost:3000/base', 'name=zz&age=14', function(response) {
+            //     console.log(response)
+            // })
+
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="form">
+        <input type="text" name="username">
+        <input type="text" name="passwword">
+        <input type="submit" value="提交">
+    </form>
+    <script src="jquery/jquery.mini.js"></script>
+    <script>
+        $("#form").on('submit', function() {
+            //将表单内容拼接成字符串类型
+            /*  var params = $("#form").serialize();
+             console.log(params); */
+
+            serializeObject($(this));
+
+            //阻止表单默认提交
+            return false;
+        });
+
+
+
+
+        //将表单中用户输入的内容转化为对象类型
+        function serlizeObject(obj) {
+            //处理结果对象
+            var result = {};
+            //[{name:'username',value:'用户输入的内容'}，{name:'password',value:'123445'}]
+            var params = obj.serializeArray();
+
+            //循环数组 将数组转化为对象类型
+            $.each(params, function(index, value) {
+                    result[value.name] = value.value;
+                })
+                //将处理的结果返回到函数外部
+            return result;
+
+        }
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //创建ajax
+        var xhr = new XMLHttpRequest();
+        //0 已经创建了ajax对象，但是还没有对ajax对象进行配置
+        console.log(xhr.readyState);
+
+        xhr.open('get', 'http://localhost:3000/server');
+        //已经对ajax对象进行了配置 但是没有发送请求
+        console.log(xhr.readyState);
+        //当ajax状态码发生变化的时候；
+        xhr.onreadystatechange = function() {
+            //2请求已经发送了
+            //3已经接收到了服务端的部分数据
+            //4服务端的响应数据已经接收完成
+            console.log(xhr.readyState);
+
+            //对ajax状态码进行判断
+            //如果状态码的值为4 就代表数据已经接收完成了 
+            if (xhr.readyState == 4) {
+                console.log(xhr.responseText)
+            }
+        }
+
+        xhr.send()
+    </script>
+</body>
+
+</html>

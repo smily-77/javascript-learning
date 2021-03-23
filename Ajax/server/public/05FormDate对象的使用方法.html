@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="form">
+        <input type="text" name="username">
+        <input type="text" name="age">
+        <input type="button" id="btn" value="提交">
+    </form>
+    <script>
+        var form = document.querySelector('#form');
+        var btn = document.querySelector('#btn');
+        btn.onclick = function() {
+            //将普通html表单转换为表单对象
+            var formData = new FormData(form);
+
+            //1.获取表单对象属性的值
+            console.log(formData.get('username'));
+            //2.设置表单对象属性的值
+            //如果设置的属性存在，就会覆盖表单中的值
+            formData.set('username', 'zjw');
+            //如果设置的表单属性不存在，就会创建一个表单属性
+            formData.set('password', '123456');
+
+            //创建ajax
+            var xhr = new XMLHttpRequest();
+            //配置ajax
+            xhr.open('post', 'http://localhost:3000/formdata');
+            //发送请求
+            xhr.send(formData);
+            //监听xhr下面的onload事件
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    console.log(xhr.responseText)
+                }
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

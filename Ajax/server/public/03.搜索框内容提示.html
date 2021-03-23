@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>搜索框输入文字自动提示</title>
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <style type="text/css">
+        .container {
+            padding-top: 150px;
+        }
+        
+        .list-group {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="请输入搜索关键字" id="search">
+            <ul class="list-group" id="list-box">
+
+
+            </ul>
+        </div>
+    </div>
+    <script src="/js/ajax.js"></script>
+    <script src="/js/template-web.js"></script>
+    <!-- art-template模板 -->
+    <script type="text/html" id="tql">
+        {{each result}}
+        <li class="list-group-item">{{$value}}</li>
+        {{/each}}
+    </script>
+
+    <script>
+        //获取搜索框
+        var searchInp = document.querySelector("#search");
+        //获取容器
+        var listBox = document.querySelector("#list-box");
+        //存储定时器
+        var timer = null;
+        //为搜索框添加输入事件
+        searchInp.oninput = function() {
+            //清除上一次的定时器
+            clearTimeout(timer);
+            //获取用户输入的值
+            var key = this.value;
+            //如果用户没有输入内容
+            if (key.trim().length == 0) {
+                //将容器隐藏
+                listBox.style.display = 'none';
+                //并且不在向下执行
+                return;
+            }
+            //设置定时器
+            timer = setTimeout(function() {
+
+                //向服务器发送请求
+                ajax({
+                    type: 'get',
+                    url: 'http://localhost:3000/searchAutoPrompt',
+                    data: {
+                        key: key
+                    },
+                    success: function(result) {
+                        //拼接模板和数据
+                        var html = template('tql', {
+                            result: result
+                        });
+                        //将拼接好的模板和数据放入容器 显示在页面
+                        listBox.innerHTML = html;
+                        //让容器显示出来
+                        listBox.style.display = 'block';
+
+
+                    }
+
+                })
+
+            }, 800)
+        }
+    </script>
+
+
+</body>
+
+</html>

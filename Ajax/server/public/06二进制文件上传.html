@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <style type="text/css">
+        .container {
+            padding-top: 60px;
+        }
+        
+        .padding {
+            padding: 5px 0 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-group">
+            <label>请选择文件</label>
+            <input type="file" id="file">
+        </div>
+        <div class="progress">
+            <div class="progress-bar" style="width: 0%;" id="bar">0%</div>
+        </div>
+
+        <div class="padding" id="box">
+            <!--<img src="" class="img-rounded img-responsive">-->
+        </div>
+
+
+    </div>
+    <script>
+        var file = document.querySelector('#file');
+        var bar = document.querySelector('#bar');
+        var box = document.querySelector('#box');
+
+        file.onchange = function() {
+            //创建新的表单对象
+            var formdata = new FormData();
+            //向表单对象中追加选中的文件
+            formdata.append('attrName', this.files[0]);
+            //创建ajax
+            var xhr = new XMLHttpRequest();
+            //配置ajax
+            xhr.open('post', 'http://localhost:3000/upload');
+
+
+            //上传进度条
+            xhr.upload.onprogress = function(ev) {
+                //ev.load  上传了多少文件
+                //ev.total 上传的总文件
+                var result = (ev.loaded / ev.total) * 100 + '%';
+                //设置进度条的宽度
+                bar.style.width = result;
+                //将进度的数据显示
+                bar.innerHTML = result;
+
+            }
+
+
+
+            //发送请求
+            xhr.send(formdata);
+            //监听服务端响应给客户端的数据
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+
+                    //上传文件预览
+                    //将响应的字符串数据转化为对象格式
+                    var result = JSON.parse(xhr.responseText);
+                    //动态创建img标签
+                    var img = document.createElement('img');
+                    //给img标签添加src属性
+                    img.src = result.path;
+                    //当图片加载完成后
+                    img.onload = function() {
+                        //在页面中显示
+                        box.appendChild(img);
+                    }
+                }
+
+            }
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>

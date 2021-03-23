@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">提交</button>
+    <div id='container'></div>
+    <script>
+        var btn = document.querySelector('#btn');
+        var container = document.querySelector('#container')
+        btn.onclick = function() {
+            //创建ajax
+            var xhr = new XMLHttpRequest();
+            //配置ajax
+            xhr.open('get', 'http://localhost:3000/xml');
+            //发送请求
+            xhr.send();
+            //xhr下的监听事件
+            xhr.onload = function() {
+                //xhr.responseXM  获取服务器端返回的xml数据
+                //console.log(xhr.responseXML)
+                var xmlDocument = xhr.responseXML;
+                var title = xmlDocument.getElementsByTagName('title')[0].innerHTML;
+                container.innerHTML = title;
+
+            }
+        }
+    </script>
+</body>
+
+</html>
